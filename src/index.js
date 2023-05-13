@@ -1,4 +1,3 @@
-// import '../scss/custom.scss'
 import './css/styles.css';
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 import { fetchCountries } from './fetchCountries'
@@ -23,17 +22,17 @@ clearMarkup()
 const name = event.target.value.trim()
     if (name.length >= 1) {
         fetchCountries(name)
-            .then((responce) => {
-            console.log(responce)
-            localStorage.setItem('resp', JSON.stringify(responce))
-            if (responce.length > 10) {
+            .then((response) => {
+            console.log(response)
+            localStorage.setItem('resp', JSON.stringify(response))
+            if (response.length > 10) {
                 return Notify.info("Too many matches found.Please enter a more specific name.");
             }
-            if (responce.length !== 1) {
-                countryArrayMarkup(responce)
+            if (response.length !== 1) {
+                countryArrayMarkup(response)
             }
-                if (responce.length === 1) {
-                countryInfoMarkup(responce)
+                if (response.length === 1) {
+                countryInfoMarkup(response)
             }
         })
         .catch((error) => {
