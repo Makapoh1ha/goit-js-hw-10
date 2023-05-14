@@ -64,12 +64,12 @@ function countryInfoMarkup(object) {
 }
 
 function countryArrayMarkup(array) {
-    const arrayMarkup = array.map(({ name, flags,}) =>
-    {
-        return `<li class="country_list_item" style="margin:10px;" ><img style="width:30px; margin-right:20px" src="${flags.svg}" alt="${name.common?name.common:name.official}"><span>${name.common?name.common:name.official}</span></li>`
+    const arrayMarkup = array.map(({ name, flags, }) => {
+        return `<li class="country_list_item" style="margin:10px;" ><img style="width:30px; margin-right:20px" src="${flags.svg}" alt="${name.common ? name.common : name.official}"><span>${name.common ? name.common : name.official}</span></li>`
     }).join("")
 
     countryList.insertAdjacentHTML('beforeend', arrayMarkup)
+}
 //     const eachLi = document.querySelectorAll(".country_list_item")
 //     eachLi.forEach((li) => {
 //         li.addEventListener('click', onCountryNameClick)
