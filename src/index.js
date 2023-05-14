@@ -1,7 +1,8 @@
-import './css/styles.css';
-import { Notify } from "notiflix/build/notiflix-notify-aio";
+
 import { fetchCountries } from './fetchCountries'
+import './css/styles.css';
 const debounce = require('lodash.debounce');
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 
 const DEBOUNCE_DELAY = 300;
@@ -17,13 +18,12 @@ let someBase = null
 input.addEventListener('input', debounce(onInputChangeValue, DEBOUNCE_DELAY))
 
 function onInputChangeValue(event) {
-console.log(event.target.value.trim())
+
 clearMarkup()
 const name = event.target.value.trim()
     if (name.length >= 1) {
         fetchCountries(name)
             .then((response) => {
-            console.log(response)
             localStorage.setItem('resp', JSON.stringify(response))
             if (response.length > 10) {
                 return Notify.info("Too many matches found.Please enter a more specific name.");
@@ -36,14 +36,14 @@ const name = event.target.value.trim()
             }
         })
         .catch((error) => {
-            clearMarkup()
+            
             Notify.failure("Oops, there is no country with that name");
         });
     }
     
 }
 
-console.log(someBase)
+
 function clearMarkup() {
     countryList.innerHTML=''
     countryInfo.innerHTML=''
@@ -75,22 +75,17 @@ function countryArrayMarkup(array) {
         li.addEventListener('click', onCountryNameClick)
     })
     
-    console.log(eachLi)
+    
 }
 function onCountryNameClick() {
 
-    console.log(event.currentTarget)
+    
     const LSbase = JSON.parse(localStorage.getItem('resp'))
-    console.log(LSbase)
+    
     
     const res = LSbase.map(({ name, flags, capital, population, languages }) => {
         
-        console.log(event.currentTarget.innerText)
-        console.log(name.common)
-        console.log(flags)
-        console.log(capital)
-        console.log(population)
-        // console.log(languages)
+        
         const eachLanguage = Object.values(languages).map((el)=>el).join(", ")
         if (event.currentTarget.innerText === name.common) {
             return `<p class="country_name"><img style="width:30px; margin-right:20px" class="country_flag" src="${flags.svg}" alt="${name.official}">${name.official}</p>
@@ -105,7 +100,7 @@ function onCountryNameClick() {
 
 }
 function clearInfoMarkup() {
-    console.dir(countryList)
+    
     countryList.childNodes.forEach((elem) => {
         if (elem.nodeName === 'P') {
             elem.innerHTML = ''
