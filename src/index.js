@@ -70,35 +70,35 @@ function countryArrayMarkup(array) {
     }).join("")
 
     countryList.insertAdjacentHTML('beforeend', arrayMarkup)
-    const eachLi = document.querySelectorAll(".country_list_item")
-    eachLi.forEach((li) => {
-        li.addEventListener('click', onCountryNameClick)
-    })
+//     const eachLi = document.querySelectorAll(".country_list_item")
+//     eachLi.forEach((li) => {
+//         li.addEventListener('click', onCountryNameClick)
+//     })
     
     
-}
-function onCountryNameClick() {
+// }
+// function onCountryNameClick() {
 
     
-    const LSbase = JSON.parse(localStorage.getItem('resp'))
+//     const LSbase = JSON.parse(localStorage.getItem('resp'))
     
     
-    const res = LSbase.map(({ name, flags, capital, population, languages }) => {
+//     const res = LSbase.map(({ name, flags, capital, population, languages }) => {
         
         
-        const eachLanguage = Object.values(languages).map((el)=>el).join(", ")
-        if (event.currentTarget.innerText === name.common) {
-            return `<p class="country_name"><img style="width:30px; margin-right:20px" class="country_flag" src="${flags.svg}" alt="${name.official}">${name.official}</p>
-        <p class="country_capital">Capital: ${capital}</p>
-        <p class="country_population">Population: ${population}</p>
-        <p class="country_languages">Languages: ${eachLanguage}</p>`
-        }
-    }).join('')
-        clearInfoMarkup()
+//         const eachLanguage = Object.values(languages).map((el)=>el).join(", ")
+//         if (event.currentTarget.innerText === name.common) {
+//             return `<p class="country_name"><img style="width:30px; margin-right:20px" class="country_flag" src="${flags.svg}" alt="${name.official}">${name.official}</p>
+//         <p class="country_capital">Capital: ${capital}</p>
+//         <p class="country_population">Population: ${population}</p>
+//         <p class="country_languages">Languages: ${eachLanguage}</p>`
+//         }
+//     }).join('')
+//         clearInfoMarkup()
     
-    countryList.insertAdjacentHTML('afterbegin', res)
+//     countryList.insertAdjacentHTML('afterbegin', res)
 
-}
+// }
 function clearInfoMarkup() {
     
     countryList.childNodes.forEach((elem) => {
