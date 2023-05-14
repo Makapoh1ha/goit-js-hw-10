@@ -6,8 +6,6 @@ function fetchCountries(name) {
         }
         return response.json();
     })
-    .catch(error => {
-         console.log('Это Error: ',error)
-    });
+    
 }
 export { fetchCountries }
